@@ -199,7 +199,7 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="d-flex flex-column h-100">
-                    <h2 class="font-weight-bolder mb-0">ダッシュボード</h2>
+                    <h2 class="font-weight-bolder mb-0">リスト編集</h2>
                   </div>
 
                 </div>
@@ -210,103 +210,54 @@
       </div>
 
 
-      <div class="row">
-        <div class="col-lg-10 col-sm-10">
-          <div class="card  mb-2">
-            <div class="card-header p-3 pt-2">
-              <div class="pt-1">
-
-                <h5>現在の状況</h5>
-                <div style="color: rgb(21, 115, 223);">
-                  <p>忘れ物0件継続１日目です。<br>
-                    この調子で頑張りましょう。<br>
-                    【XXXX】を忘れる傾向があります。</p>
-                </div>
-
-                <table class="current_tbl">
-                  <tr>
-                    <th>日付</th>
-                    <th>忘れ物防止率</th>
-                    <th>コメント</th>
-                  </tr>
-                  <tr>
-                    <td>2023/07/01</td>
-                    <td>80%</td>
-                    <td>XXXXを忘れた</td>
-                  </tr>
-                  <tr>
-                    <td>2023/07/02</td>
-                    <td>70%</td>
-                    <td>XXXXを忘れた</td>
-                  </tr>
-                  <tr>
-                    <td>2023/07/03</td>
-                    <td>100%</td>
-                    <td>やったね！</td>
-                  </tr>
-
-                </table>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       <div class="row">
         <div class="col-lg-10 col-sm-10">
           <div class="card  mb-2">
             <div class="card-header p-3 pt-2">
               <div class="pt-1">
-
-                <h5>チェックスタート</h5>
-                <div style="color: rgb(21, 115, 223);font-size: 30px;">
-                  <p>帰宅したらチェックしよう！</p>
-                </div>
 
                 <div>
                   <div style="text-align: center;margin-top: 20px;">
-                    <label>日付　</label>
-                    <input type="date" style="width: 300px;">
-                    <button class="btn bg-gradient-info green w-15" onclick="checkStart();">開始</button>
-                  </div>
-                  <div id="checkInput">
-                    <table class="check_list">
+                    <label>チェックリスト名：　</label>
+                    <input type="text" style="width: 350px;">
+                 </div>
+                  <div >
+                    <table id="check_list" class="check_list">
                       <tr>
                         <th>No</th>
                         <th>チェック項目</th>
                         <th style="text-align: center;">チェック欄</th>
                       </tr>
-                      <tr>
+                      <tr id="row-1">
                         <td>1</td>
                         <td>筆箱</td>
                         <td style="text-align: center;">
-                          <input type="checkbox" >
+                          <button class="btn bg-gradient-info red w-12" onclick="deleteRow('row-1')" >削除</button>
                         </td>
                       </tr>
-                      <tr>
+                      <tr id="row-2">
                         <td>2</td>
                         <td>教科書</td>
                         <td style="text-align: center;">
-                          <input type="checkbox" >
+                          <button class="btn bg-gradient-info red w-12" onclick="deleteRow('row-2')" >削除</button>
                         </td>
                       </tr>
-                      <tr>
+                      <tr id="row-3">
                         <td>3</td>
                         <td>体操服</td>
                         <td style="text-align: center;">
-                          <input type="checkbox" >
+                          <button class="btn bg-gradient-info red w-12"  onclick="deleteRow('row-3')">削除</button>
                         </td>
                       </tr>
                     </table>
                     <div style="text-align: center;margin-top: 30px;">
-                      <textarea id="comments" name="comments"  rows="5" cols="50" placeholder="コメントあればいれてね"></textarea>
-                      <br>
-                      <p>忘れ物防止率：75%</p>
+                     <input id="addItem" type="text" style="width: 300px;"> <button onclick="addRow();" class="btn bg-gradient-info  w-12" >追加</button>
+
                     </div>
                     <div style="text-align: center; margin-top: 30px;">
-                    <button class="btn bg-gradient-info green w-20" >チェック完了</button>
+                    <button class="btn bg-gradient-info green w-20" >登録</button>
                     </div>
                   </div>
 
@@ -484,15 +435,9 @@
 
 </html>
 <style>
-  .current_tbl {
-    line-height: 2.5rem;
-    margin-left: 30px;
-    
-  }
   .current_tbl>th,
   td {
     width: 200px;
-
   }
   .check_list{
     margin: 30px auto;
@@ -522,6 +467,9 @@
   .green {
     background-image: linear-gradient(195deg, #19d19a 0%, #14a04a 100%);
   }
+  .red {
+    background-image: linear-gradient(195deg, #dd2c84 0%, #fd609d 100%);
+  }
 
   #loading {
     background: rgba(0, 0, 0, .5);
@@ -529,10 +477,6 @@
     height: 100% !important;
     position: fixed !important;
 
-  }
-
-  #checkInput{
-    display: none;
   }
 
   @media screen and (max-width: 600px) {
