@@ -153,6 +153,7 @@
 
 
           </div>
+          <div id="display_name"></div>
           <ul class="navbar-nav  justify-content-end">
 
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -169,6 +170,7 @@
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a>
             </li>
+
 
           </ul>
         </div>
@@ -282,31 +284,31 @@
                         <td>1</td>
                         <td>筆箱</td>
                         <td style="text-align: center;">
-                          <input type="checkbox" >
+                          <input type="checkbox">
                         </td>
                       </tr>
                       <tr>
                         <td>2</td>
                         <td>教科書</td>
                         <td style="text-align: center;">
-                          <input type="checkbox" >
+                          <input type="checkbox">
                         </td>
                       </tr>
                       <tr>
                         <td>3</td>
                         <td>体操服</td>
                         <td style="text-align: center;">
-                          <input type="checkbox" >
+                          <input type="checkbox">
                         </td>
                       </tr>
                     </table>
                     <div style="text-align: center;margin-top: 30px;">
-                      <textarea id="comments" name="comments"  rows="5" cols="50" placeholder="コメントあればいれてね"></textarea>
+                      <textarea id="comments" name="comments" rows="5" cols="50" placeholder="コメントあればいれてね"></textarea>
                       <br>
                       <p>忘れ物防止率：75%</p>
                     </div>
                     <div style="text-align: center; margin-top: 30px;">
-                    <button class="btn bg-gradient-info green w-20" >チェック完了</button>
+                      <button class="btn bg-gradient-info green w-20">チェック完了</button>
                     </div>
                   </div>
 
@@ -357,6 +359,7 @@
 
 
   <div class="fixed-plugin">
+
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
       <i class="material-icons py-2">settings</i>
     </a>
@@ -420,27 +423,6 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
 
-    var map = L.map('mapid').setView([34.699887, 133.75], 7); // 日本全体表示
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: "&copy; <a href='https://www.openstreetmap.org/copyright' target='_blank'>OpenStreetMap</a>"
-    }).addTo(map);
-    /**
-     * RainViewer radar animation part
-     * @type {number[]}
-     */
-    var apiData = {};
-    var mapFrames = [];
-    var lastPastFramePosition = -1;
-    var radarLayers = [];
-    var optionKind = 'radar'; // can be 'radar' or 'satellite'
-    var optionTileSize = 256; // can be 256 or 512.
-    var optionColorScheme = 2; // from 0 to 8. Check the https://rainviewer.com/api/color-schemes.html for additional information
-    var optionSmoothData = 1; // 0 - not smooth, 1 - smooth
-    var optionSnowColors = 1; // 0 - do not show snow colors, 1 - show snow colors
-    var animationPosition = 0;
-    var animationTimer = false;
-    var loadingTilesCount = 0;
-    var loadedTilesCount = 0;
 
 
 
@@ -451,7 +433,9 @@
       //5秒後にローディング非表示
       setTimeout(function () {
         hide_loading();
-      }, 1000);
+      }, 500);
+
+      setDisplayName("display_name");
     })
 
     //ローディング表示
@@ -467,6 +451,9 @@
     function hello() {
       console.log('Hello');
     }
+
+  
+
 
 
 
@@ -487,33 +474,39 @@
   .current_tbl {
     line-height: 2.5rem;
     margin-left: 30px;
-    
+
   }
+
   .current_tbl>th,
   td {
     width: 200px;
 
   }
-  .check_list{
+
+  .check_list {
     margin: 30px auto;
     line-height: 2.5rem;
 
   }
+
   .check_list>th,
   td {
     width: 200px;
   }
-  .check_list > td:nth-of-type(3) {
+
+  .check_list>td:nth-of-type(3) {
     text-align: center !important;
-    background-color:skyblue;
+    background-color: skyblue;
   }
+
   .check_list>tr th:nth-of-type(3) {
     text-align: center;
   }
+
   input[type=checkbox] {
-	transform: scale(2);
-	margin: 0 6px 0 0;
-}
+    transform: scale(2);
+    margin: 0 6px 0 0;
+  }
 
   .btn {
     margin-bottom: 0rem !important;
@@ -531,7 +524,7 @@
 
   }
 
-  #checkInput{
+  #checkInput {
     display: none;
   }
 

@@ -45,7 +45,7 @@
                   <p class="mb-0">必要事項を入力の上、登録してください。</p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
+                  <form role="form" id="createAccount">
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label">お名前</label>
                       <input id="name" type="text" class="form-control" required>
@@ -65,7 +65,7 @@
                       </label>
                     </div>
                     <div class="text-center">
-                      <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">新規登録</button>
+                      <button type="button" onclick="create()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">新規登録</button>
                     </div>
                   </form>
                 </div>
@@ -96,16 +96,15 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
 
-
-    //Submit時の処理（入力チェック後）
-    $("form").submit(function() {
- 
-      alert("OK")
-      //サーバへ送信・ログイン処理
-      createAccout();
-      
-   
-  });
+    function create() {
+      var form = document.getElementById('createAccount')
+      //Submit時の処理（入力チェック後）
+      if (form.reportValidity()) {
+        //入力チェックが問題なければAPIをコールする
+        //サーバへ送信・ログイン処理
+        createAccout();
+      }
+    }
 
   </script>
   <!-- Github buttons -->
