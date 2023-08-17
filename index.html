@@ -59,9 +59,9 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  <script src="./assets/js/main.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="./assets/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.0/leaflet.js"></script>
@@ -112,7 +112,7 @@
 
 
         <li class="nav-item">
-          <a class="nav-link text-white " href="index.html">
+          <a class="nav-link text-white url" href="index.html">
 
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 
@@ -124,7 +124,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white " href="page1.html">
+          <a class="nav-link text-white url" href="page1.html">
 
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
@@ -274,12 +274,13 @@
                     <button class="btn bg-gradient-info green w-15" onclick="checkStart();">開始</button>
                   </div>
                   <div id="checkInput">
-                    <table class="check_list">
+                    <table class="check_list" id="list_table">
                       <tr>
                         <th>No</th>
                         <th>チェック項目</th>
                         <th style="text-align: center;">チェック欄</th>
                       </tr>
+                     <!--
                       <tr>
                         <td>1</td>
                         <td>筆箱</td>
@@ -301,6 +302,7 @@
                           <input type="checkbox">
                         </td>
                       </tr>
+                      -->
                     </table>
                     <div style="text-align: center;margin-top: 30px;">
                       <textarea id="comments" name="comments" rows="5" cols="50" placeholder="コメントあればいれてね"></textarea>
@@ -452,7 +454,40 @@
       console.log('Hello');
     }
 
-  
+    function retrieveGETqs() {
+
+      var query = window.location.search.substring(1);
+      return query;
+      /* 引数がない時は処理しない */
+      if (!query) return false;
+
+    }
+
+    $(function () {
+
+      //各'a'に共通のクラス名をつけることで、一部のリンクだけがパラメータ引き継ぎをできる用意も可能
+      jQuery('a').click(function () {
+
+        //リンク先を取得
+        var target_url = $(this).attr("href");
+
+        //パラメータを取得
+        var str = retrieveGETqs();
+        var prm = decodeURIComponent(str);
+
+        if (prm) {
+          //target_urlに'？'を含む場合
+          if (target_url.indexOf('?') != -1) {
+            //追加パラメータの先頭文字列を'&'に置換
+            $('a').attr('href', target_url + '&' + prm);
+          } else {
+            $('a').attr('href', target_url + '?' + prm);
+          }
+        }
+      })
+    });
+
+
 
 
 
