@@ -146,8 +146,9 @@ function getListData(id){
         var td1 = "<tr><td>"+String(i+1)+"</td>"
         var td2 = "<td>"+items[i]+"</td>"
         var td3 = "<td style='text-align: center;'><input type='checkbox'></td></tr>"
+
         
-        $("#list_table").append(td1 + td2 + td3)
+      $("#list_table").append(td1 + td2 + td3)
 
       }
 
@@ -163,3 +164,52 @@ function getListData(id){
 
 
 
+//項目登録
+function createItem() {
+  //TODO:本番用と切り替える
+  //const API_URL = "https://bejewelled-arithmetic-214844.netlify.app/.netlify/functions/SlackNotice";
+  const API_URL = "http://localhost:9000/.netlify/functions/CreateItem";
+
+
+  //入力内容を取得
+  var item = document.getElementById("1-1").value;
+
+var result = []
+  let elements = document.getElementsByClassName('box');
+  for(var i=0; i<elements.length; i++){
+    result.push(elements[i].value)
+    alert(elements[i].value)
+
+  }
+  alert(res)
+
+
+
+  //コメントをスラックに送信する
+  let body = {
+    items: result,
+
+  };
+
+  // バックエンドAPIへPOST
+  const payload = JSON.stringify(body);
+
+  fetch(API_URL, {
+    method: "POST",
+    body: payload,
+  })
+
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data.result);
+      alert(data.result)
+      
+
+    })
+    .catch(error => {
+      console.log(error);
+      alert("通信エラーが発生しました。再度送信ください。");
+    });
+}
