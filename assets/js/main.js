@@ -213,3 +213,101 @@ var result = []
       alert("通信エラーが発生しました。再度送信ください。");
     });
 }
+
+
+function createHistory() {
+  //TODO:本番用と切り替える
+  //const API_URL = "https://bejewelled-arithmetic-214844.netlify.app/.netlify/functions/SlackNotice";
+  const API_URL = "http://localhost:9000/.netlify/functions/CreateListResult";
+
+
+  //入力内容を取得
+  var item = document.getElementById("1-1").value;
+
+  
+  var result = []
+  /**
+  let item = document.getElementsByClassName('box');
+  let check = document.getElementsByClassName('check');
+
+  for(var i=0; i<item.length; i++){
+    console.log(check[i].checked)
+    
+    
+    var json = {
+      "item":item[i].value,
+      "check":check[i].checked
+    }
+    result.push(json)
+
+  }
+  alert(res)
+ */
+
+
+  //コメントをスラックに送信する
+  let body = {
+    items: result,
+
+  };
+
+  // バックエンドAPIへPOST
+  const payload = JSON.stringify(body);
+
+  fetch(API_URL, {
+    method: "POST",
+    body: payload,
+  })
+
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data.result);
+      alert(data.result)
+      
+
+    })
+    .catch(error => {
+      console.log(error);
+      alert("通信エラーが発生しました。再度送信ください。");
+    });
+}
+
+//結果履歴をDBから取得する
+function getHistory(id){
+  //TODO:本番用と切り替える
+  //const API_URL = "https://bejewelled-arithmetic-214844.netlify.app/.netlify/functions/SlackNotice";
+  const API_URL = "http://localhost:9000/.netlify/functions/GetResultHistory?id="+id;
+
+
+  fetch(API_URL, {
+    method: "GET",
+  })
+
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      alert(data.history[0].date);
+      alert(data.detail[0].item);
+      /**
+      for(var i=0; i<items.length; i++){
+        var td1 = "<tr><td>"+String(i+1)+"</td>"
+        var td2 = "<td>"+items[i]+"</td>"
+        var td3 = "<td style='text-align: center;'><input type='checkbox'></td></tr>"
+
+        
+      $("#list_table").append(td1 + td2 + td3)
+
+      }
+ */
+      
+      
+
+    })
+    .catch(error => {
+      console.log(error);
+      alert("通信エラーが発生しました。再度送信ください。");
+    });
+}
