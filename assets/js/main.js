@@ -64,8 +64,8 @@ function loginToServer() {
 //サーバと疎通して、ユーザを新規登録する
 function createAccout() {
   //TODO:本番用と切り替える
-  //const API_URL = "https://bejewelled-arithmetic-214844.netlify.app/.netlify/functions/SlackNotice";
-  const API_URL = "http://localhost:9000/.netlify/functions/AccountCreate";
+  const API_URL = "https://rad-sherbet-3eb86a.netlify.app/.netlify/functions/AccountCreate";
+  //const API_URL = "http://localhost:9000/.netlify/functions/AccountCreate";
 
 
   //入力内容を取得
@@ -128,8 +128,8 @@ function getParamId() {
 //項目リストをDBから取得する
 function getListData(id){
   //TODO:本番用と切り替える
-  //const API_URL = "https://bejewelled-arithmetic-214844.netlify.app/.netlify/functions/SlackNotice";
-  const API_URL = "http://localhost:9000/.netlify/functions/GetList?id="+id;
+  const API_URL = "https://rad-sherbet-3eb86a.netlify.app/.netlify/functions/GetList?id="+id;
+  //const API_URL = "http://localhost:9000/.netlify/functions/GetList?id="+id;
 
 
   fetch(API_URL, {
@@ -167,8 +167,8 @@ function getListData(id){
 //項目登録
 function createItem() {
   //TODO:本番用と切り替える
-  //const API_URL = "https://bejewelled-arithmetic-214844.netlify.app/.netlify/functions/SlackNotice";
-  const API_URL = "http://localhost:9000/.netlify/functions/CreateItem";
+  const API_URL = "https://rad-sherbet-3eb86a.netlify.app/.netlify/functions/CreateItem";
+  //const API_URL = "http://localhost:9000/.netlify/functions/CreateItem";
 
 
   //入力内容を取得
@@ -217,8 +217,8 @@ var result = []
 
 function createHistory() {
   //TODO:本番用と切り替える
-  //const API_URL = "https://bejewelled-arithmetic-214844.netlify.app/.netlify/functions/SlackNotice";
-  const API_URL = "http://localhost:9000/.netlify/functions/CreateListResult";
+  const API_URL = "https://rad-sherbet-3eb86a.netlify.app/.netlify/functions/CreateListResult";
+  //const API_URL = "http://localhost:9000/.netlify/functions/CreateListResult";
 
 
   //入力内容を取得
@@ -289,8 +289,8 @@ function getHistory(id){
       return response.json();
     })
     .then((data) => {
-      alert(data.history[0].date);
-      alert(data.detail[0].item);
+    //  alert(data.history[0].date);
+     // alert(data.detail[0].item);
       var elem1 = document.getElementById("test1");
       elem1.textContent = data.continues
       /**
