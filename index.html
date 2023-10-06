@@ -124,7 +124,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white url" href="page1.html">
+          <a class="nav-link text-white url" href="pages/page1.html">
 
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
@@ -313,6 +313,7 @@
                       <button class="btn bg-gradient-info green w-20">チェック完了</button>
                     </div>
                   </div>
+                  <h2>今日の忘れもの数：<span id="test1">X</span>個</h2>
 
                 </div>
 
@@ -430,6 +431,10 @@
 
     $(function () {
       //ローディング表示
+      var userId = getParamId();
+      if(userId === null){
+        location.href = "/pages/sign-in.html"
+      }
       show_loading();
 
       //5秒後にローディング非表示
@@ -439,6 +444,12 @@
 
       setDisplayName("display_name");
       getHistory(getParamId());
+
+      var elem1 = document.getElementById("test1");
+      elem1.textContent = "AA"
+
+
+
     })
 
     //ローディング表示

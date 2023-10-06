@@ -20,8 +20,8 @@ function deleteRow(rowno) {
 //サーバと疎通して、ログインする
 function loginToServer() {
   //TODO:本番用と切り替える
-  //const API_URL = "https://bejewelled-arithmetic-214844.netlify.app/.netlify/functions/SlackNotice";
-  const API_URL = "http://localhost:9000/.netlify/functions/login";
+  const API_URL = "https://rad-sherbet-3eb86a.netlify.app/.netlify/functions/login";
+ // const API_URL = "http://localhost:9000/.netlify/functions/login";
 
 
   //入力内容を取得
@@ -277,8 +277,8 @@ function createHistory() {
 //結果履歴をDBから取得する
 function getHistory(id){
   //TODO:本番用と切り替える
-  //const API_URL = "https://bejewelled-arithmetic-214844.netlify.app/.netlify/functions/SlackNotice";
-  const API_URL = "http://localhost:9000/.netlify/functions/GetResultHistory?id="+id;
+  const API_URL = "https://rad-sherbet-3eb86a.netlify.app/.netlify/functions/GetResultHistory?id="+id;
+  //const API_URL = "http://localhost:9000/.netlify/functions/GetResultHistory?id="+id;
 
 
   fetch(API_URL, {
