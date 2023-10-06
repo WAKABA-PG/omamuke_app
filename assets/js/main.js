@@ -20,8 +20,8 @@ function deleteRow(rowno) {
 //サーバと疎通して、ログインする
 function loginToServer() {
   //TODO:本番用と切り替える
-  const API_URL = "https://rad-sherbet-3eb86a.netlify.app/.netlify/functions/login";
- // const API_URL = "http://localhost:9000/.netlify/functions/login";
+  const API_URL = "https://rad-sherbet-3eb86a.netlify.app/.netlify/functions/Login";
+ // const API_URL = "http://localhost:9000/.netlify/functions/Login";
 
 
   //入力内容を取得
