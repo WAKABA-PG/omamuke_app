@@ -431,10 +431,12 @@
 
     $(function () {
       //ローディング表示
+      
       var userId = getParamId();
       if(userId === null){
         location.href = "/pages/sign-in.html"
       }
+
       show_loading();
 
       //5秒後にローディング非表示
@@ -445,8 +447,7 @@
       setDisplayName("display_name");
       getHistory(getParamId());
 
-      var elem1 = document.getElementById("test1");
-      elem1.textContent = "AA"
+      
 
 
 

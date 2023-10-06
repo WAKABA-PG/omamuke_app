@@ -291,6 +291,8 @@ function getHistory(id){
     .then((data) => {
       alert(data.history[0].date);
       alert(data.detail[0].item);
+      var elem1 = document.getElementById("test1");
+      elem1.textContent = data.continues
       /**
       for(var i=0; i<items.length; i++){
         var td1 = "<tr><td>"+String(i+1)+"</td>"
